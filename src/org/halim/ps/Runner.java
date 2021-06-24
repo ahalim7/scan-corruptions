@@ -1,6 +1,5 @@
 package org.halim.ps;
 
-import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.poi.openxml4j.exceptions.NotOfficeXmlFileException;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -17,20 +16,20 @@ public class Runner {
         validatePDF();
     }
 
-    private static void validateWord(){
+    private static void validateWord() {
         try {
-            XWPFDocument doc = new XWPFDocument(Files.newInputStream(Paths.get("file.doc")));
+            new XWPFDocument(Files.newInputStream(Paths.get("file.doc")));
         } catch (NotOfficeXmlFileException | IOException e) {
+            //TODO:: invalid office file, write your logic here
             System.out.println(e.getMessage());
         }
     }
 
-    private static void validatePDF(){
+    private static void validatePDF() {
         try {
-            File file = new File("file.pdf");
-            PDDocument c = PDDocument.load(file);
-
+            PDDocument.load(new File("file.pdf"));
         } catch (IOException e) {
+            //TODO:: invalid pdf file, write your logic here
             System.out.println(e.getMessage());
         }
     }
